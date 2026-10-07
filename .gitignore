@@ -1,0 +1,5 @@
+node_modules/
+.next/
+work/
+*.tsbuildinfo
+.DS_Store
