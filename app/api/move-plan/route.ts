@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export const runtime = "nodejs";
+
 const recipient = "bubacarr@jamoving.co";
 const asText = (value: unknown, maximum: number) => typeof value === "string" ? value.trim().slice(0, maximum) : "";
 
@@ -22,21 +24,43 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: "Email delivery is not configured yet. Please call us directly." }, { status: 503 });
   }
 
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      from: process.env.RESEND_FROM_EMAIL,
-      to: [recipient],
-      reply_to: email,
-      subject: `New move plan from ${name}`,
-      text: `New move plan inquiry\n\nName: ${name}\nEmail: ${email}\nMove type: ${moveType}\nFrom: ${from}\nTo: ${to}\nPreferred date: ${date}\nHome size: ${size}\nPacking support: ${packing}\nAccess and household preferences: ${notes}`,
-    }),
-  });
+  let response: Response;
+  try {
+    response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: process.env.RESEND_FROM_EMAIL.trim(),
+        to: [recipient],
+        reply_to: email,
+        subject: `New move request from ${name}`,
+        text: `New move request\n\nName: ${name}\nEmail: ${email}\nMove type: ${moveType}\nFrom: ${from}\nTo: ${to}\nPreferred date: ${date}\nHome size: ${size}\nPacking support: ${packing}\nAccess and household preferences: ${notes}`,
+      }),
+      cache: "no-store",
+    });
+  } catch (error) {
+    console.error("Move request email network failure", {
+      message: error instanceof Error ? error.message : "Unknown error",
+    });
+    return NextResponse.json(
+      { message: "Email delivery is temporarily unavailable. Please try again or call us directly." },
+      { status: 502 },
+    );
+  }
 
   if (!response.ok) {
-    console.error("Move plan email failed", { status: response.status });
-    return NextResponse.json({ message: "We could not send your move plan. Please call us directly." }, { status: 502 });
+    const providerResponse = await response.text().catch(() => "Unreadable response");
+    console.error("Move request email failed", {
+      status: response.status,
+      providerResponse,
+    });
+    return NextResponse.json(
+      { message: "We could not send your request. Please try again or call us directly." },
+      { status: 502 },
+    );
   }
   return NextResponse.json({ ok: true });
 }
