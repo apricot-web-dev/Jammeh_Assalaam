@@ -121,6 +121,20 @@ header {
   font-weight: 700;
   display: flex;
 }
+.brand-mark {
+  color: var(--gold);
+  background: var(--green);
+  border-radius: 12px 12px 4px 4px;
+  flex: 0 0 auto;
+  width: 47px;
+  height: 47px;
+  padding: 7px;
+  display: grid;
+}
+.brand-mark svg {
+  width: 100%;
+  height: 100%;
+}
 .brandmark {
   background: var(--green);
   width: 43px;
@@ -588,6 +602,58 @@ header {
   padding-top: 22px;
   display: block;
 }
+.contact {
+  background: #eff3ed;
+  grid-template-columns: 0.82fr 1.18fr;
+  align-items: center;
+  gap: 10%;
+  max-width: none;
+  display: grid;
+}
+.contact-intro > p {
+  color: var(--muted);
+  max-width: 380px;
+  margin-top: 25px;
+}
+.contact-options {
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  display: grid;
+}
+.contact-option {
+  border: 1px solid #d5dfd2;
+  background: #fff;
+  border-radius: 7px;
+  min-height: 160px;
+  padding: 24px;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.contact-option:hover {
+  border-color: #8eaa8d;
+  box-shadow: 0 10px 25px #163d3210;
+  transform: translateY(-2px);
+}
+.contact-option > span {
+  letter-spacing: 0.14em;
+  color: #758a75;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+.contact-option strong {
+  color: var(--green);
+  overflow-wrap: anywhere;
+  margin-top: 18px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.contact-option small {
+  color: var(--muted);
+  margin-top: 7px;
+  font-size: 0.76rem;
+}
 .planner {
   background: #eff3ed;
   grid-template-columns: 0.9fr 1.1fr;
@@ -951,6 +1017,7 @@ footer > div:not(.footer-bottom) {
   .values,
   .story,
   .area,
+  .contact,
   .planner,
   .faq {
     grid-template-columns: 1fr;
@@ -970,6 +1037,9 @@ footer > div:not(.footer-bottom) {
   }
   .story {
     gap: 35px;
+  }
+  .contact-intro > p {
+    max-width: 550px;
   }
   .route-card,
   .plan-intro > p {
@@ -1007,6 +1077,10 @@ footer > div:not(.footer-bottom) {
   }
 }
 @media (max-width: 480px) {
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+  }
   .brand {
     gap: 9px;
     font-size: 1.07rem;
@@ -1091,6 +1165,12 @@ footer > div:not(.footer-bottom) {
   .story-card {
     min-height: 330px;
     padding: 32px;
+  }
+  .contact-options {
+    grid-template-columns: 1fr;
+  }
+  .contact-option {
+    min-height: 132px;
   }
   .founder-label {
     right: 22px;

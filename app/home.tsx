@@ -1,7 +1,29 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import MovePlanner from "./move-planner";
+
+function BrandLogo() {
+  return (
+    <>
+      <span className="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.5">
+          <path d="m6 14 18-9 18 9-18 9-18-9Z" />
+          <path d="M6 14v20l18 9 18-9V14" />
+          <path d="M24 23v20" />
+          <path d="m15 18 18 9" />
+        </svg>
+      </span>
+      <span className="brand-lockup">
+        <span className="brand-top">JAMMEH ASSALAAM</span>
+        <span className="brand-moving">MOVING</span>
+        <span className="brand-arabic" lang="ar" dir="rtl">
+          السلام
+        </span>
+      </span>
+    </>
+  );
+}
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -16,13 +38,7 @@ export default function Home() {
       </a>
       <header>
         <a className="brand" href="#">
-          <span className="brand-lockup">
-            <span className="brand-top">JAMMEH ASSALAAM</span>
-            <span className="brand-moving">MOVING</span>
-            <span className="brand-arabic" lang="ar" dir="rtl">
-              السلام
-            </span>
-          </span>
+          <BrandLogo />
         </a>
         <nav
           className={menuOpen ? "nav mobile-open" : "nav"}
@@ -33,6 +49,7 @@ export default function Home() {
           <a href="#values">Our values</a>
           <a href="#story">Our story</a>
           <a href="#area">Service area</a>
+          <a href="#contact">Contact</a>
         </nav>
         <a className="button small header-cta" href="tel:+14159405405">
           Call (415) 940-5405
@@ -78,8 +95,8 @@ export default function Home() {
               and what matters to you.
             </p>
             <div className="hero-actions">
-              <a className="button" href="#plan">
-                Let’s plan your move{" "}
+              <a className="button" href="#contact">
+                Contact us{" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="19"
@@ -285,8 +302,8 @@ export default function Home() {
                 Thoughtful planning for stairs, parking, and everything in
                 between.
               </p>
-              <a href="#plan">
-                Plan this move{" "}
+              <a href="#contact">
+                Contact us{" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"
@@ -330,8 +347,8 @@ export default function Home() {
                 and timing. Carrier arrangements and availability are confirmed
                 before booking.
               </p>
-              <a href="#plan">
-                Plan this move{" "}
+              <a href="#contact">
+                Contact us{" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"
@@ -375,8 +392,8 @@ export default function Home() {
                 Organize fragile belongings, prepare your home, or plan loading
                 and unloading support for a truck you arrange.
               </p>
-              <a href="#plan">
-                Plan this move{" "}
+              <a href="#contact">
+                Contact us{" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"
@@ -608,79 +625,45 @@ export default function Home() {
             </span>
           </div>
         </section>
-        <section className="planner section" id="plan">
-          <div className="plan-intro">
-            <div className="eyebrow">05 / LET’S START WITH A PLAN</div>
+        <section className="contact section" id="contact">
+          <div className="contact-intro">
+            <div className="eyebrow">05 / LET’S TALK ABOUT YOUR MOVE</div>
             <h2>
-              Tell us where
+              Ready when
               <br />
-              life is taking you.
+              you are.
             </h2>
             <p>
-              Send us your move details, and we’ll follow up about availability
-              and the right support for your move.
-            </p>
-            <ul>
-              <li>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-check"
-                >
-                  <path d="M20 6 9 17l-5-5"></path>
-                </svg>{" "}
-                Your route and preferred date
-              </li>
-              <li>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-check"
-                >
-                  <path d="M20 6 9 17l-5-5"></path>
-                </svg>{" "}
-                Your home and packing needs
-              </li>
-              <li>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-check"
-                >
-                  <path d="M20 6 9 17l-5-5"></path>
-                </svg>{" "}
-                Your family’s preferences
-              </li>
-            </ul>
-            <p className="plan-note">
-              No payment and no reservation. We’ll receive your request and
-              follow up with you. To discuss availability now,{" "}
-              <a href="tel:+14159405405">call (415) 940-5405</a>.
+              Tell us where you&apos;re headed and what support you need. Reach
+              out in whatever way feels easiest.
             </p>
           </div>
-          <div className="form-card">
-            <MovePlanner />
+          <div className="contact-options" aria-label="Contact Jammeh AsSalaam Moving">
+            <a className="contact-option" href="tel:+14159405405">
+              <span>CALL</span>
+              <strong>(415) 940-5405</strong>
+              <small>Talk through your move</small>
+            </a>
+            <a className="contact-option" href="sms:+14159405405">
+              <span>TEXT</span>
+              <strong>(415) 940-5405</strong>
+              <small>Send a quick message</small>
+            </a>
+            <a
+              className="contact-option"
+              href="https://wa.me/14159405405"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>WHATSAPP</span>
+              <strong>Message us</strong>
+              <small>Chat with our team</small>
+            </a>
+            <a className="contact-option" href="mailto:bubacarr@jamoving.co">
+              <span>EMAIL</span>
+              <strong>bubacarr@jamoving.co</strong>
+              <small>Share your move details</small>
+            </a>
           </div>
         </section>
         <section className="faq section" id="faq">
@@ -753,10 +736,10 @@ export default function Home() {
               </h3>
               <div id="answer-1" hidden={openFaq !== 1}>
                 <p>
-                  Absolutely. Add your preferences to your move plan, including
-                  prayer breaks, private rooms, shoe-cover preferences, and
-                  items you would like to handle yourself. Arrangements should
-                  be agreed before moving day.
+                  Absolutely. Mention your preferences when you call, text,
+                  WhatsApp, or email us, including prayer breaks, private rooms,
+                  shoe-cover preferences, and items you would like to handle
+                  yourself. Arrangements should be agreed before moving day.
                 </p>
               </div>
             </div>
@@ -821,10 +804,9 @@ export default function Home() {
               </h3>
               <div id="answer-3" hidden={openFaq !== 3}>
                 <p>
-                  Yes. Choose cross-country in the planner and enter your
-                  destination. The route, carrier, authorization, delivery
-                  window, and terms need to be confirmed before any interstate
-                  move is booked.
+                  Yes. Call, text, WhatsApp, or email us with your destination.
+                  The route, carrier, authorization, delivery window, and terms
+                  need to be confirmed before any interstate move is booked.
                 </p>
               </div>
             </div>
@@ -835,7 +817,7 @@ export default function Home() {
                   aria-controls="answer-4"
                   onClick={() => setOpenFaq(openFaq === 4 ? null : 4)}
                 >
-                  Does submitting the form book my move?
+                  How do I get started?
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -855,8 +837,8 @@ export default function Home() {
               </h3>
               <div id="answer-4" hidden={openFaq !== 4}>
                 <p>
-                  No. It sends us your request so we can follow up. It does not
-                  reserve a date or charge you.
+                  Reach out by phone, text, WhatsApp, or email. We&apos;ll discuss
+                  availability, your move details, and next steps with you.
                 </p>
               </div>
             </div>
@@ -869,8 +851,8 @@ export default function Home() {
             <br />
             for what comes next.
           </h2>
-          <a className="button gold" href="#plan">
-            Start your move plan{" "}
+          <a className="button gold" href="#contact">
+            Get in touch{" "}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="19"
@@ -894,13 +876,7 @@ export default function Home() {
       </main>
       <footer>
         <a className="brand" href="#">
-          <span className="brand-lockup">
-            <span className="brand-top">JAMMEH ASSALAAM</span>
-            <span className="brand-moving">MOVING</span>
-            <span className="brand-arabic" lang="ar" dir="rtl">
-              السلام
-            </span>
-          </span>
+          <BrandLogo />
         </a>
         <p>
           A peaceful move. A new beginning.
@@ -913,6 +889,7 @@ export default function Home() {
           <a href="/east-bay-moving-services">East Bay moving services</a>
           <a href="#story">Our story</a>
           <a href="tel:+14159405405">(415) 940-5405</a>
+          <a href="mailto:bubacarr@jamoving.co">Email us</a>
         </div>
         <div className="footer-bottom">
           <span>© 2026 Jammeh AsSalaam Moving</span>

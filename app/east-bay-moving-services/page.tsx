@@ -144,8 +144,8 @@ export default function EastBayServices() {
             <a className="button" href="tel:+14159405405">
               Discuss your move: (415) 940-5405
             </a>
-            <Link className="text-link" href="/#plan">
-              Create your move plan
+            <Link className="text-link" href="/#contact">
+              Contact us about your move
             </Link>
           </div>
         </section>
@@ -179,9 +179,9 @@ export default function EastBayServices() {
           </div>
           <p className="guide-note">
             Moving out of California?{" "}
-            <Link href="/#plan">Choose cross-country in the planner</Link>, then
-            discuss your route by phone. Carrier arrangements, availability, and
-            delivery terms need to be confirmed before booking.
+            <Link href="/#contact">Contact us about your cross-country move</Link>,
+            {" "}then discuss your route by phone. Carrier arrangements,
+            availability, and delivery terms need to be confirmed before booking.
           </p>
         </section>
         <section className="section" aria-labelledby="areas-heading">
@@ -233,8 +233,8 @@ export default function EastBayServices() {
               yourself.
             </li>
           </ol>
-          <Link className="text-link" href="/#plan">
-            Save these details in your move plan →
+          <Link className="text-link" href="/#contact">
+            Contact us with these details →
           </Link>
         </section>
         <section
@@ -254,9 +254,9 @@ export default function EastBayServices() {
           <details>
             <summary>Can I plan a small apartment move?</summary>
             <p>
-              Yes. Select “Studio / small move” or your bedroom count in the
-              planner. Include stairs, elevator access, and parking so the
-              discussion reflects the work your apartment requires.
+              Yes. Tell us your home size, stairs, elevator access, and parking
+              when you contact us so the discussion reflects the work your
+              apartment requires.
             </p>
           </details>
           <details>
@@ -268,11 +268,11 @@ export default function EastBayServices() {
             </p>
           </details>
           <details>
-            <summary>Is my move booked when I complete the planner?</summary>
+            <summary>Is my move booked when I contact you?</summary>
             <p>
-              No. The planner creates a summary you can copy or download. Your
-              information is not sent, and no date is reserved. Call to discuss
-              availability and confirm the arrangements.
+              No. Contacting us starts the conversation; it does not reserve a
+              date. We&apos;ll confirm availability and arrangements with you before
+              booking.
             </p>
           </details>
         </section>
