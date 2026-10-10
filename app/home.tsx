@@ -10,7 +10,6 @@ function BrandLogo() {
           <path d="m6 14 18-9 18 9-18 9-18-9Z" />
           <path d="M6 14v20l18 9 18-9V14" />
           <path d="M24 23v20" />
-          <path d="m15 18 18 9" />
         </svg>
       </span>
       <span className="brand-lockup">
@@ -640,24 +639,9 @@ export default function Home() {
           </div>
           <div className="contact-options" aria-label="Contact Jammeh AsSalaam Moving">
             <a className="contact-option" href="tel:+14159405405">
-              <span>CALL</span>
+              <span>CALL OR TEXT</span>
               <strong>(415) 940-5405</strong>
-              <small>Talk through your move</small>
-            </a>
-            <a className="contact-option" href="sms:+14159405405">
-              <span>TEXT</span>
-              <strong>(415) 940-5405</strong>
-              <small>Send a quick message</small>
-            </a>
-            <a
-              className="contact-option"
-              href="https://wa.me/14159405405"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span>WHATSAPP</span>
-              <strong>Message us</strong>
-              <small>Chat with our team</small>
+              <small>Call us or send a text</small>
             </a>
             <a className="contact-option" href="mailto:bubacarr@jamoving.co">
               <span>EMAIL</span>
