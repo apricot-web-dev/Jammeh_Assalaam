@@ -124,11 +124,11 @@ export default function Home() {
           </div>
           <div className="hero-image">
             <Image
-              src="/bubacarr-hero-portrait.png"
+              src="/bubacarr-truck-hero.jpeg"
               fill
               sizes="(max-width: 1100px) 88vw, 44vw"
               preload
-              alt="Bubacarr Jammeh, founder of Jammeh AsSalaam Moving"
+              alt="Bubacarr Jammeh carefully handling wrapped furniture in a moving truck"
             />
             <div className="image-caption">
               <span className="caption-icon">

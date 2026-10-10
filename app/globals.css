@@ -246,7 +246,7 @@ header {
   overflow: hidden;
 }
 .hero-image img {
-  object-position: 54% center;
+  object-position: 50% 35%;
 }
 .hero-image:after {
   content: "";
@@ -442,7 +442,7 @@ header {
   pointer-events: none;
 }
 .founder-photo {
-  object-position: center center;
+  object-position: center 16%;
 }
 .founder-label {
   letter-spacing: 0.13em;
