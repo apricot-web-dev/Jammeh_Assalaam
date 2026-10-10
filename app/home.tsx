@@ -124,11 +124,11 @@ export default function Home() {
           </div>
           <div className="hero-image">
             <Image
-              src="/moving-hero.png"
+              src="/bubacarr-hero-portrait.png"
               fill
               sizes="(max-width: 1100px) 88vw, 44vw"
               preload
-              alt="Moving-day scene with an unbranded green truck outside a California home"
+              alt="Bubacarr Jammeh, founder of Jammeh AsSalaam Moving"
             />
             <div className="image-caption">
               <span className="caption-icon">
@@ -513,52 +513,6 @@ export default function Home() {
             <div className="signature">
               Bubacarr Jammeh<span>Founder, Jammeh AsSalaam Moving</span>
             </div>
-          </div>
-        </section>
-        <section className="work-gallery section" aria-labelledby="work-gallery-heading">
-          <div className="work-gallery-heading">
-            <div>
-              <div className="eyebrow">THE WORK BEHIND THE PROMISE</div>
-              <h2 id="work-gallery-heading">Hands-on care, move after move.</h2>
-            </div>
-            <p>
-              Every move is personal. We show up prepared, protect what matters,
-              and handle the heavy lifting with care.
-            </p>
-          </div>
-          <div className="work-gallery-grid">
-            <figure className="work-photo work-photo-large">
-              <Image
-                src="/moving-gallery/bubacarr-wrapped-furniture.jpeg"
-                fill
-                sizes="(max-width: 700px) 88vw, 46vw"
-                alt="Bubacarr carefully carrying wrapped furniture in a moving truck"
-              />
-            </figure>
-            <figure className="work-photo">
-              <Image
-                src="/moving-gallery/bubacarr-loading-truck.jpeg"
-                fill
-                sizes="(max-width: 700px) 44vw, 23vw"
-                alt="Bubacarr organizing wrapped furniture in a moving truck"
-              />
-            </figure>
-            <figure className="work-photo">
-              <Image
-                src="/moving-gallery/bubacarr-lifting-furniture.jpeg"
-                fill
-                sizes="(max-width: 700px) 44vw, 23vw"
-                alt="Bubacarr safely lifting a wrapped furniture piece during a move"
-              />
-            </figure>
-            <figure className="work-photo">
-              <Image
-                src="/moving-gallery/bubacarr-arranging-move.jpeg"
-                fill
-                sizes="(max-width: 700px) 88vw, 23vw"
-                alt="Bubacarr arranging furniture securely in a moving truck"
-              />
-            </figure>
           </div>
         </section>
         <section className="area section" id="area">

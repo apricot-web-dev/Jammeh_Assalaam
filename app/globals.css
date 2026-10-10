@@ -504,56 +504,6 @@ header {
   font-style: normal;
   display: block;
 }
-.work-gallery {
-  border-top: 1px solid var(--border);
-  padding-top: 82px;
-  padding-bottom: 100px;
-}
-.work-gallery-heading {
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 40px;
-  margin-bottom: 42px;
-  display: flex;
-}
-.work-gallery-heading > p {
-  color: var(--muted);
-  max-width: 325px;
-}
-.work-gallery-grid {
-  grid-template-columns: 1.45fr 0.75fr 0.75fr;
-  grid-template-rows: 250px 250px;
-  gap: 16px;
-  display: grid;
-}
-.work-photo {
-  background: #dbe2d8;
-  border-radius: 5px;
-  margin: 0;
-  position: relative;
-  overflow: hidden;
-}
-.work-photo img {
-  transition: transform 0.35s ease;
-}
-.work-photo:hover img {
-  transform: scale(1.035);
-}
-.work-photo-large {
-  grid-row: 1 / span 2;
-}
-.work-photo-large img {
-  object-position: 50% 45%;
-}
-.work-photo:nth-child(2) img {
-  object-position: 50% 35%;
-}
-.work-photo:nth-child(3) img {
-  object-position: 50% 28%;
-}
-.work-photo:nth-child(4) img {
-  object-position: 50% 35%;
-}
 .area {
   border-top: 1px solid var(--border);
   grid-template-columns: 1.1fr 0.9fr;
@@ -1040,24 +990,6 @@ footer > div:not(.footer-bottom) {
   .story {
     gap: 35px;
   }
-  .work-gallery-heading {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .work-gallery-heading > p {
-    max-width: 550px;
-  }
-  .work-gallery-grid {
-    grid-template-columns: 1.2fr 0.8fr;
-    grid-template-rows: 260px 260px 260px;
-  }
-  .work-photo-large {
-    grid-row: 1 / span 2;
-  }
-  .work-photo:nth-child(4) {
-    grid-column: 1 / -1;
-  }
   .route-card,
   .plan-intro > p {
     max-width: 550px;
@@ -1183,22 +1115,6 @@ footer > div:not(.footer-bottom) {
     right: 22px;
     bottom: 21px;
     left: 22px;
-  }
-  .work-gallery {
-    padding-top: 58px;
-    padding-bottom: 58px;
-  }
-  .work-gallery-grid {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 220px 220px 220px;
-    gap: 10px;
-  }
-  .work-photo-large {
-    grid-column: 1 / -1;
-    grid-row: auto;
-  }
-  .work-photo:nth-child(4) {
-    grid-column: auto;
   }
   .form-card {
     padding: 23px;
