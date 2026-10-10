@@ -1,0 +1,7 @@
+import type { MetadataRoute } from "next";
+import { absoluteUrl } from "../lib/site";
+export default function sitemap(): MetadataRoute.Sitemap {
+  return ["/", "/east-bay-moving-services"].map((path) => ({
+    url: absoluteUrl(path),
+  }));
+}

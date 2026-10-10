@@ -5,11 +5,15 @@ export default function MovePlanner() {
   const [moveType, setMoveType] = useState("Local");
   const [summary, setSummary] = useState("");
   const [copyStatus, setCopyStatus] = useState("");
-  function createPlan(event: FormEvent<HTMLFormElement>) {
+  const [sendStatus, setSendStatus] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  async function createPlan(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    setSummary(`MY MOVE PLAN — JAMMEH ASSALAAM MOVING
+    const movePlan = `MY MOVE PLAN — JAMMEH ASSALAAM MOVING
 
+Name: ${data.get("name")}
+Email: ${data.get("email")}
 Move type: ${moveType}
 From: ${data.get("from")}
 To: ${data.get("to")}
@@ -18,8 +22,35 @@ Home size: ${data.get("size")}
 Packing support: ${data.get("packing")}
 Access and household preferences: ${data.get("notes") || "To discuss"}
 
-This is a planning summary, not a quote or reservation. Confirm pricing, availability, and service arrangements before booking.`);
+This is a planning summary, not a quote or reservation. Confirm pricing, availability, and service arrangements before booking.`;
+    setSummary(movePlan);
     setCopyStatus("");
+    setSendStatus("");
+    setSubmitting(true);
+    try {
+      const response = await fetch("/api/move-plan", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          moveType,
+          from: data.get("from"),
+          to: data.get("to"),
+          date: data.get("date"),
+          size: data.get("size"),
+          packing: data.get("packing"),
+          notes: data.get("notes"),
+        }),
+      });
+      const result = await response.json() as { message?: string };
+      if (!response.ok) throw new Error(result.message ?? "We could not send your move plan.");
+      setSendStatus("Your move plan has been sent to Jammeh AsSalaam Moving.");
+    } catch (error) {
+      setSendStatus(error instanceof Error ? error.message : "Your plan was created, but we could not send it. Please call us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   }
   function downloadPlan() {
     const url = URL.createObjectURL(
@@ -46,8 +77,14 @@ This is a planning summary, not a quote or reservation. Confirm pricing, availab
           <span className="result-icon">✓</span>
           <h3>Your move plan is ready.</h3>
           <p>
-            Download or copy it for your next conversation. This has not been
-            sent and your move is not booked.
+            Download or copy it for your next conversation. Your move is not
+            booked until availability and pricing are confirmed.
+          </p>
+          {sendStatus && <p role="status">{sendStatus}</p>}
+          <p>
+            <a className="text-link" href="tel:+14159405405">
+              Discuss your plan: (415) 940-5405
+            </a>
           </p>
           <pre>{summary}</pre>
           <div className="result-actions">
@@ -92,6 +129,14 @@ This is a planning summary, not a quote or reservation. Confirm pricing, availab
           </label>
         </fieldset>
         <div className="form-grid">
+          <label>
+            Your name
+            <input name="name" autoComplete="name" required maxLength={100} />
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" autoComplete="email" required maxLength={320} />
+          </label>
           <label>
             Moving from
             <input
@@ -147,8 +192,8 @@ This is a planning summary, not a quote or reservation. Confirm pricing, availab
             placeholder="Stairs, parking, fragile items, prayer times, or privacy preferences…"
           ></textarea>
         </label>
-        <button className="button form-submit" type="submit">
-          Create my move plan{" "}
+        <button className="button form-submit" type="submit" disabled={submitting}>
+          {submitting ? "Sending your move plan…" : "Create my move plan"}{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="18"
