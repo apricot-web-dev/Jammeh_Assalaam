@@ -3,28 +3,13 @@ import { useState, type FormEvent } from "react";
 
 export default function MovePlanner() {
   const [moveType, setMoveType] = useState("Local");
-  const [summary, setSummary] = useState("");
-  const [copyStatus, setCopyStatus] = useState("");
   const [sendStatus, setSendStatus] = useState("");
+  const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  async function createPlan(event: FormEvent<HTMLFormElement>) {
+  async function submitInquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const movePlan = `MY MOVE PLAN — JAMMEH ASSALAAM MOVING
-
-Name: ${data.get("name")}
-Email: ${data.get("email")}
-Move type: ${moveType}
-From: ${data.get("from")}
-To: ${data.get("to")}
-Preferred date: ${data.get("date") || "Flexible"}
-Home size: ${data.get("size")}
-Packing support: ${data.get("packing")}
-Access and household preferences: ${data.get("notes") || "To discuss"}
-
-This is a planning summary, not a quote or reservation. Confirm pricing, availability, and service arrangements before booking.`;
-    setSummary(movePlan);
-    setCopyStatus("");
+    const form = event.currentTarget;
+    const data = new FormData(form);
     setSendStatus("");
     setSubmitting(true);
     try {
@@ -43,70 +28,47 @@ This is a planning summary, not a quote or reservation. Confirm pricing, availab
           notes: data.get("notes"),
         }),
       });
-      const result = await response.json() as { message?: string };
-      if (!response.ok) throw new Error(result.message ?? "We could not send your move plan.");
-      setSendStatus("Your move plan has been sent to Jammeh AsSalaam Moving.");
+      const result = (await response.json()) as { message?: string };
+      if (!response.ok) {
+        throw new Error(result.message ?? "We could not send your request.");
+      }
+      form.reset();
+      setMoveType("Local");
+      setSubmitted(true);
     } catch (error) {
-      setSendStatus(error instanceof Error ? error.message : "Your plan was created, but we could not send it. Please call us directly.");
+      setSendStatus(
+        error instanceof Error
+          ? error.message
+          : "We could not send your request. Please call us directly.",
+      );
     } finally {
       setSubmitting(false);
     }
   }
-  function downloadPlan() {
-    const url = URL.createObjectURL(
-      new Blob([summary], { type: "text/plain;charset=utf-8" }),
-    );
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "my-move-plan.txt";
-    link.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  }
-  async function copyPlan() {
-    try {
-      await navigator.clipboard.writeText(summary);
-      setCopyStatus("Copied");
-    } catch {
-      setCopyStatus("Unable to copy. Please download your plan instead.");
-    }
-  }
   return (
     <>
-      {summary && (
+      {submitted && (
         <div className="plan-result" aria-live="polite">
           <span className="result-icon">✓</span>
-          <h3>Your move plan is ready.</h3>
+          <h3>Thanks — your request was submitted.</h3>
           <p>
-            Download or copy it for your next conversation. Your move is not
-            booked until availability and pricing are confirmed.
+            We received your move details and will follow up about availability
+            and next steps.
           </p>
-          {sendStatus && <p role="status">{sendStatus}</p>}
           <p>
             <a className="text-link" href="tel:+14159405405">
-              Discuss your plan: (415) 940-5405
+              Prefer to talk now? Call (415) 940-5405
             </a>
           </p>
-          <pre>{summary}</pre>
-          <div className="result-actions">
-            <button className="button" onClick={downloadPlan}>
-              ↓ Download plan
-            </button>
-            <button className="secondary" onClick={copyPlan}>
-              {copyStatus === "Copied" ? "Copied" : "Copy plan"}
-            </button>
-          </div>
-          {copyStatus && copyStatus !== "Copied" && (
-            <p role="status">{copyStatus}</p>
-          )}
           <button
             className="text-link edit-plan"
-            onClick={() => setSummary("")}
+            onClick={() => setSubmitted(false)}
           >
-            Edit move details
+            Send another request
           </button>
         </div>
       )}
-      <form onSubmit={createPlan} hidden={Boolean(summary)}>
+      {!submitted && <form onSubmit={submitInquiry}>
         <div className="form-title">
           <h3>Your move, at a glance.</h3>
           <span>~ 1 minute</span>
@@ -114,10 +76,16 @@ This is a planning summary, not a quote or reservation. Confirm pricing, availab
         <fieldset className="move-type">
           <legend>Where are you moving?</legend>
           <label className={moveType === "Local" ? "selected" : ""}>
-            <input type="radio" name="type" defaultChecked value="Local" />
+            <input
+              type="radio"
+              name="type"
+              checked={moveType === "Local"}
+              onChange={() => setMoveType("Local")}
+              value="Local"
+            />
             Local
           </label>
-          <label className="">
+          <label className={moveType === "Cross-country" ? "selected" : ""}>
             <input
               type="radio"
               name="type"
@@ -193,7 +161,7 @@ This is a planning summary, not a quote or reservation. Confirm pricing, availab
           ></textarea>
         </label>
         <button className="button form-submit" type="submit" disabled={submitting}>
-          {submitting ? "Sending your move plan…" : "Create my move plan"}{" "}
+          {submitting ? "Sending your request…" : "Submit move request"}{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="18"
@@ -214,10 +182,15 @@ This is a planning summary, not a quote or reservation. Confirm pricing, availab
             <path d="M8 16h.01"></path>
           </svg>
         </button>
+        {sendStatus && (
+          <p className="form-status" role="status">
+            {sendStatus}
+          </p>
+        )}
         <p className="form-foot">
-          A planning summary, not an estimate or confirmed booking.
+          This is a request, not a confirmed booking or estimate.
         </p>
-      </form>{" "}
+      </form>}
     </>
   );
 }

@@ -715,6 +715,11 @@ legend {
   margin-top: 13px;
   font-size: 0.7rem;
 }
+.form-status {
+  color: #9d3428;
+  margin-top: 14px;
+  font-size: 0.8rem;
+}
 .result-icon {
   background: #edf2e8;
   border-radius: 50%;
@@ -728,30 +733,6 @@ legend {
   color: var(--muted);
   margin-top: 15px;
   font-size: 0.875rem;
-}
-.plan-result pre {
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  background: var(--paper);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  margin: 23px 0;
-  padding: 20px;
-  font:
-    0.8rem/1.8 Arial,
-    sans-serif;
-}
-.result-actions {
-  flex-wrap: wrap;
-  gap: 10px;
-  display: flex;
-}
-.secondary {
-  border: 1px solid var(--border);
-  color: var(--green);
-  background: #fff;
-  border-radius: 4px;
-  padding: 14px 20px;
 }
 .edit-plan {
   margin-top: 22px;

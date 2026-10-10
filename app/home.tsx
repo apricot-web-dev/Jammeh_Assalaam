@@ -617,8 +617,8 @@ export default function Home() {
               life is taking you.
             </h2>
             <p>
-              Get your move details in one place. Create a summary to keep handy
-              when discussing your move.
+              Send us your move details, and we’ll follow up about availability
+              and the right support for your move.
             </p>
             <ul>
               <li>
@@ -674,8 +674,8 @@ export default function Home() {
               </li>
             </ul>
             <p className="plan-note">
-              No payment. No reservation. Your details stay in this page and are
-              not sent. To discuss availability,{" "}
+              No payment and no reservation. We’ll receive your request and
+              follow up with you. To discuss availability now,{" "}
               <a href="tel:+14159405405">call (415) 940-5405</a>.
             </p>
           </div>
@@ -835,7 +835,7 @@ export default function Home() {
                   aria-controls="answer-4"
                   onClick={() => setOpenFaq(openFaq === 4 ? null : 4)}
                 >
-                  Does the planner book my move?
+                  Does submitting the form book my move?
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -855,8 +855,8 @@ export default function Home() {
               </h3>
               <div id="answer-4" hidden={openFaq !== 4}>
                 <p>
-                  No. It creates a move summary you can copy or download. It
-                  does not send your information, reserve a date, or charge you.
+                  No. It sends us your request so we can follow up. It does not
+                  reserve a date or charge you.
                 </p>
               </div>
             </div>
