@@ -170,7 +170,6 @@ export default function Home() {
                 <strong>to wherever home is next.</strong>
               </span>
             </div>
-            <span className="image-label">A NEW CHAPTER STARTS HERE</span>
           </div>
         </section>
         <div className="trust-strip">
