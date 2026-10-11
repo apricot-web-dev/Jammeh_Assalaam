@@ -124,7 +124,7 @@ header {
 .brand-mark {
   color: var(--gold);
   background: var(--green);
-  border-radius: 12px 12px 4px 4px;
+  border-radius: 0;
   flex: 0 0 auto;
   width: 47px;
   height: 47px;
@@ -260,7 +260,7 @@ header {
   overflow: hidden;
 }
 .hero-image img {
-  object-position: 50% 35%;
+  object-position: 85% 50%;
 }
 .hero-image:after {
   content: "";
@@ -653,6 +653,21 @@ header {
   color: var(--muted);
   margin-top: 7px;
   font-size: 0.76rem;
+}
+.contact-action-links {
+  display: flex;
+  gap: 9px;
+  margin-top: 12px;
+}
+.contact-action-links a {
+  border: 1px solid #b8c9b5;
+  border-radius: 4px;
+  color: var(--green);
+  padding: 7px 11px;
+  font-size: 0.76rem;
+}
+.contact-action-links a:hover {
+  background: #edf2e8;
 }
 .planner {
   background: #eff3ed;

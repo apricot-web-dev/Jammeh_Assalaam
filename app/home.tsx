@@ -140,11 +140,11 @@ export default function Home() {
           </div>
           <div className="hero-image">
             <Image
-              src="/bubacarr-truck-hero.jpeg"
+              src="/bubacarr-wrapping-furniture-hero.png"
               fill
               sizes="(max-width: 1100px) 88vw, 44vw"
               preload
-              alt="Bubacarr Jammeh carefully handling wrapped furniture in a moving truck"
+              alt="Bubacarr Jammeh wrapping furniture for a move in a home"
             />
             <div className="image-caption">
               <span className="caption-icon">
@@ -638,11 +638,14 @@ export default function Home() {
             </p>
           </div>
           <div className="contact-options" aria-label="Contact Jammeh AsSalaam Moving">
-            <a className="contact-option" href="tel:+14159405405">
+            <div className="contact-option">
               <span>CALL OR TEXT</span>
               <strong>(415) 940-5405</strong>
-              <small>Call us or send a text</small>
-            </a>
+              <div className="contact-action-links">
+                <a href="tel:+14159405405">Call</a>
+                <a href="sms:+14159405405">Text</a>
+              </div>
+            </div>
             <a className="contact-option" href="mailto:bubacarr@jamoving.co">
               <span>EMAIL</span>
               <strong>bubacarr@jamoving.co</strong>
